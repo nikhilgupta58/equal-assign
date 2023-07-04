@@ -26,7 +26,7 @@ export default function LoginView() {
       <div className="border-t-[1px] border-b-gray-200 flex flex-col items-center pt-4 pb-2 justify-center gap-3 font-[500] text-[20px]">
         <Button
           onClick={() => setIsOpen(true)}
-          className="flex-grow text-[20px]"
+          className="flex-grow text-[20px] w-[80%]"
         >
           LOGIN
         </Button>
