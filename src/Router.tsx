@@ -1,8 +1,8 @@
 import AppLayout from "./layouts/AppLayout";
-import PublicLayout from "./layouts/PublicLayout";
+import { Login } from "./pages/Login";
 
 export default function Router() {
-  return <PublicLayout></PublicLayout>;
+  return <Login />
 
   return <AppLayout></AppLayout>;
 }
