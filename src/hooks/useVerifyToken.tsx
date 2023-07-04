@@ -1,5 +1,5 @@
-import axios from "axios";
 import React from "react";
+import { getProtectedAxios } from "../libs/auth";
 import { userStore } from "../store";
 import { BASE_URL } from "../utils/constants";
 
@@ -10,6 +10,7 @@ export default function useRequestToken() {
   const setSession = userStore((state: any) => state.setSession);
   const mutate = ({ mobileNumber, mobileOtp }) => {
     setIsLoading(true);
+    const axios = getProtectedAxios();
     const payload = {
       requestId: null,
       provider: "EQUAL_AUTH",

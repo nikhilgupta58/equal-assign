@@ -4,20 +4,29 @@ import { userStore } from "../store";
 let authAxios: AxiosInstance;
 
 export const getProtectedAxios = () => {
-  const access_token = userStore.getState().session;
+  const session = userStore.getState().session;
 
-  if (access_token && authAxios) {
+  if (session && authAxios) {
     authAxios.defaults.headers = {
-      Authorization: `Bearer ${access_token}`,
+      "x-eq-session-token": `${session}`,
     };
   }
 
   if (!authAxios)
     authAxios = axios.create({
       headers: {
-        ...(typeof access_token === "string"
+        ...(typeof session === "string"
           ? {
-              Authorization: `Bearer ${access_token}`,
+              "x-eq-session-token": `${session}`,
+              authority: "api.test.equal.in",
+              accept: "*/*",
+              "accept-language": "en-GB,en;q=0.6",
+              "access-control-allow-origin": "*",
+              "cache-control": "no-cache",
+              "content-type": "application/json; charset=utf-8",
+              origin: "https://test.equal.in",
+              pragma: "no-cache",
+              referer: "https://test.equal.in/",
             }
           : {}),
       },

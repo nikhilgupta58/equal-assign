@@ -10,12 +10,8 @@ export const userStore = create<UserStore>(
     persist(
       (set) => ({
         session: null,
-
         setSession: (session) => {
-          set((oldState) => ({
-            ...oldState,
-            session,
-          }));
+          set({ session: session });
         },
         logout: () => set({ session: null }),
       }),
@@ -25,3 +21,9 @@ export const userStore = create<UserStore>(
     )
   )
 );
+
+export const toastStore = create<any>((set) => ({
+  data: null,
+  setErrorToast: (message) => set({ data: message }),
+  clear: () => set({ data: null }),
+}));
