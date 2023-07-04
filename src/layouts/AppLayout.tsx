@@ -1,5 +1,3 @@
-import React from "react";
-
-export default function AppLayout(){
-    return <></>
+export default function AppLayout() {
+  return <></>;
 }

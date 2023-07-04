@@ -8,7 +8,7 @@ interface UserStore {
 export const userStore = create<UserStore>(
   devtools(
     persist(
-      (set, get) => ({
+      (set) => ({
         session: null,
 
         setSession: (session) => {
