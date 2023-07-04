@@ -23,11 +23,11 @@ const Button = ({
 
   const variantClass = {
     primary:
-      "text-xs bg-equal-green transition-all duration-100 hover:brightness-150 text-[#fff]",
+      "text-xs bg-equal-green transition-all duration-100 hover:brightness-110 text-[#fff]",
     secondary:
       "text-xs bg-[#fff] text-[#212121] hover:bg-gray-100 transition-all duration-100 border-[1px] border-[#212121]",
     danger:
-      "text-xs bg-red-800 text-[#fff] hover:brightness-150 transition-all duration-100",
+      "text-xs bg-red-800 text-[#fff] hover:brightness-110 transition-all duration-100",
   };
   const buttonClass = `rounded px-[32px] py-[16px] font-[500] text-[18px] ${variantClass[variant]} ${buttonClasses} ${className}`;
   return (
