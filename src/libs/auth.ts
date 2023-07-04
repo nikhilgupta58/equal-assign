@@ -33,7 +33,6 @@ export const getProtectedAxios = () => {
       switch (status) {
         case 403:
           localStorage.removeItem("equal");
-          window.location.replace("/login");
           return;
         default:
           throw error;
