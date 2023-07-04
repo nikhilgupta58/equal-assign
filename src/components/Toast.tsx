@@ -25,8 +25,7 @@ export default function Toast() {
     }
   }, [data]);
 
-  const messaage =
-    typeof data?.message === "string" ? data?.message : "Internal Server Error";
+  const messaage = typeof data === "string" ? data : "Internal Server Error";
 
   if (!data) return null;
 

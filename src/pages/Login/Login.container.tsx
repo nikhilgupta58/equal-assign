@@ -22,7 +22,9 @@ export default function LoginContainer() {
     <GenricLayout>
       <LoginContext.Provider value={{ cards, setIsOpen }}>
         <LoginView />
-        <LoginModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        {isOpen ? (
+          <LoginModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        ) : null}
       </LoginContext.Provider>
     </GenricLayout>
   );

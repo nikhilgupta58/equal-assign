@@ -1,3 +1,5 @@
+import GenricLayout from "./GenricLayout";
+
 export default function AppLayout() {
-  return <>sdf</>;
+  return <GenricLayout> aef </GenricLayout>;
 }

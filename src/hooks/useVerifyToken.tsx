@@ -23,14 +23,14 @@ export default function useVerifyToken() {
     axios
       .post(endpoint, payload)
       .then(({ data }: { data: any }) => {
-        setIsSuccess(true);
-        if (data?.status_code === "200") setIsSuccess(true);
-        else {
+        const sessionId = data?.data?.session;
+        if (data?.status_code === "200") {
+          setIsSuccess(true);
+          const session = `EQSI=${sessionId?.EQSI};EQTS=${sessionId?.EQTS};ESTS=${sessionId?.ESTS}`;
+          setSession(session);
+        } else {
           setErrorToast(data?.message);
         }
-        // const session = `EQSI=EG-PR-MMNTTMPXVWXHC1PKMW51;EQTS=$2a$10$gXusaQ3eLsNyPdM7ZLKVOeFV35BHmUDbfAurUL6R4HzuRhB5TY4Mi;ESTS=gPNdVR7Gn9cvdrvfmrXE5DOSOcgA8DWWg9rxlqMfSOH8NPOGbQSKxUCvvkfwGjlW0cp8x5x-CZNl8EonJFdYBg`;
-        // setSession(session);
-        setSession(null);
       })
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));

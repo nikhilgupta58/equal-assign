@@ -24,7 +24,6 @@ export default function useRequestToken() {
       .post(endpoint, payload, config)
       .then(() => {
         setIsSuccess(true);
-        setErrorToast("ds");
       })
       .catch((err) => {
         console.log(err);
