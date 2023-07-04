@@ -20,7 +20,7 @@ export default function LoginModal({ isOpen, onClose }) {
           <p>Mobile Number</p>
           <RxCross2 onClick={onClose} />
         </div>
-        {!isSuccess ? (
+        {isSuccess ? (
           <div className="p-4">
             <input
               value={mobileOtp}
