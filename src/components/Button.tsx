@@ -1,0 +1,40 @@
+import React from "react";
+import Loader from "./Loader";
+
+interface IProp {
+  disabled?: boolean;
+  isLoading?: boolean;
+  children: React.ReactNode;
+  className?: string;
+  variant?: "primary" | "secondary" | "danger";
+}
+
+const Button = ({
+  disabled = false,
+  isLoading = false,
+  children,
+  className = "",
+  variant = "primary",
+  ...rest
+}: IProp & any) => {
+  const buttonClasses = `btn btn-primary ${
+    disabled || isLoading ? "opacity-70 cursor-not-allowed" : ""
+  } ${!disabled && !isLoading ? "brightness-hover" : ""}`;
+
+  const variantClass = {
+    primary:
+      "text-xs bg-equal-green transition-all duration-100 hover:brightness-150 text-[#fff]",
+    secondary:
+      "text-xs bg-[#fff] text-[#212121] hover:bg-gray-100 transition-all duration-100 border-[1px] border-[#212121]",
+    danger:
+      "text-xs bg-red-800 text-[#fff] hover:brightness-150 transition-all duration-100",
+  };
+  const buttonClass = `rounded px-[32px] py-[16px] font-[500] text-[18px] ${variantClass[variant]} ${buttonClasses} ${className}`;
+  return (
+    <button disabled={disabled || isLoading} className={buttonClass} {...rest}>
+      {isLoading ? <Loader /> : children}
+    </button>
+  );
+};
+
+export default Button;
