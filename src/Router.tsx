@@ -6,5 +6,5 @@ export default function Router() {
   const [session] = userStore((state) => [state.session]);
   if (!session) return <Login />;
 
-  return <AppLayout />;
+  return <AppLayout>d</AppLayout>;
 }
