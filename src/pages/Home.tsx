@@ -2,7 +2,7 @@ import useIdentities from "../hooks/useIdentities";
 import AppLayout from "../layouts/AppLayout";
 
 export default function Home() {
-  const { data, isLoading } = useIdentities();
+  const { isLoading } = useIdentities();
 
   if (isLoading) {
     return (
@@ -14,5 +14,5 @@ export default function Home() {
     );
   }
 
-  return <AppLayout></AppLayout>;
+  return <AppLayout>Identities</AppLayout>;
 }
