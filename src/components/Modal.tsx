@@ -14,17 +14,17 @@ export default function Modal({ children, isOpen, onClose, ...props }: IProp) {
   return (
     <>
       <div
-        className={`fixed w-screen h-screen top-0 left-0 opacity-50 bg-gray-900 rounded-md ${
+        className={`fixed w-screen h-screen top-0 left-0 opacity-50 bg-gray-900  ${
           isOpen ? "block" : "hidden"
         }`}
         onClick={onClose}
       ></div>
 
       <div
-        className={`fixed flex flex-col bg-white opacity-100 rounded-md rounded-8 border-1 border-solid border-gray-200 justify-center items-center ${
+        className={`fixed flex flex-col bg-white opacity-100 rounded-2xl border-1 border-solid border-gray-200 justify-center items-center ${
           isOpen ? "block" : "hidden"
         }`}
-        style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
+        style={{ bottom: "2%", left: "50%", transform: "translate(-50%, 0%)" }}
         {...props}
       >
         {children}

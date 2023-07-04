@@ -1,11 +1,11 @@
 import React from "react";
+import { FiPhone } from "react-icons/fi";
 import { RxCross2 } from "react-icons/rx";
 import Button from "../../../components/Button";
 import Modal from "../../../components/Modal";
 import useRequestToken from "../../../hooks/useRequestToken";
 import useVerifyToken from "../../../hooks/useVerifyToken";
 import { validatePhone } from "../../../utils/helper";
-
 export default function LoginModal({ isOpen, onClose }) {
   const { mutate, isLoading, isSuccess } = useRequestToken();
   const { mutate: verifyMutate, isLoading: isVerifyLoading } = useVerifyToken();
@@ -14,11 +14,19 @@ export default function LoginModal({ isOpen, onClose }) {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="w-[400px] max-w-[85vw] max-h-[85vh]">
-        <div className="py-4 border-b-[1px] px-4 border-b-gray-200 flex items-center justify-between">
+      <div className="w-[450px] max-w-[85vw] max-h-[85vh]">
+        <div className="py-6 border-b-[1px] px-4 border-b-gray-200 flex items-center justify-between">
           <div className="w-1 h-1" />
-          <p>Mobile Number</p>
-          <RxCross2 onClick={onClose} />
+          <div className="flex items-center gap-2">
+            <FiPhone />
+            <p>Mobile Number</p>
+          </div>
+          <RxCross2
+            onClick={onClose}
+            size={22}
+            color={"#BDC3C7"}
+            className="cursor-pointer"
+          />
         </div>
         {isSuccess ? (
           <div className="p-4">
