@@ -32,7 +32,13 @@ const Button = ({
   const buttonClass = `rounded px-[32px] py-[16px] font-[500] text-[18px] ${variantClass[variant]} ${buttonClasses} ${className}`;
   return (
     <button disabled={disabled || isLoading} className={buttonClass} {...rest}>
-      {isLoading ? <Loader /> : children}
+      {isLoading ? (
+        <div className="flex items-center justify-center">
+          <Loader size={18} />
+        </div>
+      ) : (
+        children
+      )}
     </button>
   );
 };
