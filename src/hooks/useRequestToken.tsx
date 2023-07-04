@@ -1,7 +1,7 @@
+import axios from "axios";
 import React from "react";
-import { getProtectedAxios } from "../libs/auth";
 import { toastStore } from "../store";
-import { BASE_URL } from "../utils/constants";
+import { BASE_URL, header } from "../utils/constants";
 
 export default function useRequestToken() {
   const [isSuccess, setIsSuccess] = React.useState(null);
@@ -9,7 +9,9 @@ export default function useRequestToken() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [setErrorToast] = toastStore((state) => [state.setErrorToast]);
   const mutate = (phone) => {
-    const axios = getProtectedAxios();
+    let config = {
+      headers: header,
+    };
     setIsLoading(true);
     const payload = {
       requestId: "",
@@ -19,7 +21,7 @@ export default function useRequestToken() {
     };
     const endpoint = BASE_URL + "/auth/init";
     axios
-      .post(endpoint, payload)
+      .post(endpoint, payload, config)
       .then(() => {
         setIsSuccess(true);
         setErrorToast("ds");

@@ -13,31 +13,6 @@ export default function LoginModal({ isOpen, onClose }) {
     if (isSuccess) console.log(isSuccess);
   }, [isSuccess]);
 
-  const RequestOtp = () => {
-    return (
-      <div className="p-4">
-        <input
-          value={mobileNumber}
-          onChange={(e) => {
-            setMobileNumber(e.target.value);
-          }}
-          placeholder="Enter phone number"
-        //   type="number"
-          className="p-2 bg-gray-50 w-full border-[1px] border-gray-100 appearance-none"
-        />
-        <p className="text-[12px] text-gray-400">Enter your no. to login</p>{" "}
-        <Button
-          isLoading={isLoading}
-          onClick={() => mutate(mobileNumber)}
-          className="w-full mt-4"
-          disabled={!validatePhone(mobileNumber)}
-        >
-          Proceed
-        </Button>
-      </div>
-    );
-  };
-
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="w-[400px] max-w-[85vw] max-h-[85vh]">
@@ -46,7 +21,26 @@ export default function LoginModal({ isOpen, onClose }) {
           <p>Mobile Number</p>
           <RxCross2 onClick={onClose} />
         </div>
-        <RequestOtp />
+        <div className="p-4">
+          <input
+            value={mobileNumber}
+            onChange={(e) => {
+              setMobileNumber(e.target.value);
+            }}
+            placeholder="Enter phone number"
+            type="number"
+            className="p-2 bg-gray-50 w-full border-[1px] border-gray-100 appearance-none"
+          />
+          <p className="text-[12px] text-gray-400">Enter your no. to login</p>{" "}
+          <Button
+            isLoading={isLoading}
+            onClick={() => mutate(mobileNumber)}
+            className="w-full mt-4"
+            disabled={!validatePhone(mobileNumber)}
+          >
+            Proceed
+          </Button>
+        </div>
       </div>
     </Modal>
   );

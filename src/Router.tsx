@@ -1,8 +1,10 @@
 import AppLayout from "./layouts/AppLayout";
 import { Login } from "./pages/Login";
+import { userStore } from "./store";
 
 export default function Router() {
-  return <Login />
+  const [session] = userStore((state) => [state.session]);
+  if (!session) return <Login />;
 
-  return <AppLayout></AppLayout>;
+  return <AppLayout />;
 }

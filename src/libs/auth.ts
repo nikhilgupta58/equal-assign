@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 import { userStore } from "../store";
+import { header } from "../utils/constants";
 
 let authAxios: AxiosInstance;
 
@@ -18,15 +19,7 @@ export const getProtectedAxios = () => {
         ...(typeof session === "string"
           ? {
               "x-eq-session-token": `${session}`,
-              authority: "api.test.equal.in",
-              accept: "*/*",
-              "accept-language": "en-GB,en;q=0.6",
-              "access-control-allow-origin": "*",
-              "cache-control": "no-cache",
-              "content-type": "application/json; charset=utf-8",
-              origin: "https://test.equal.in",
-              pragma: "no-cache",
-              referer: "https://test.equal.in/",
+              ...header,
             }
           : {}),
       },
