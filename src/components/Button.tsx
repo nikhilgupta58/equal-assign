@@ -18,7 +18,7 @@ const Button = ({
   ...rest
 }: IProp & any) => {
   const buttonClasses = `btn btn-primary ${
-    disabled || isLoading ? "opacity-70 cursor-not-allowed" : ""
+    disabled ? "bg-gray-200 text-[#141414] opacity-60 cursor-not-allowed" : ""
   } ${!disabled && !isLoading ? "brightness-hover" : ""}`;
 
   const variantClass = {
@@ -31,7 +31,11 @@ const Button = ({
   };
   const buttonClass = `rounded px-[32px] py-[16px] font-[500] text-[18px] ${variantClass[variant]} ${buttonClasses} ${className}`;
   return (
-    <button disabled={disabled || isLoading} className={buttonClass} {...rest}>
+    <button
+      disabled={disabled || isLoading}
+      className={`${buttonClass} ${disabled ? "hover:brightness-100" : ""}`}
+      {...rest}
+    >
       {isLoading ? (
         <div className="flex items-center justify-center">
           <Loader size={18} />

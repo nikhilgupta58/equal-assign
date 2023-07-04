@@ -1,4 +1,5 @@
 import Button from "../../components/Button";
+import PoweredBy from "../../components/PoweredBy";
 import { logo } from "../../utils/assets";
 import { useLoginContext } from "./utils/context";
 
@@ -30,10 +31,7 @@ export default function LoginView() {
         >
           LOGIN
         </Button>
-        <div className="flex items-center gap-2">
-          <p className="text-[14px]">powered by</p>
-          <img src={logo} className="h-[15px]" />
-        </div>
+        <PoweredBy />
       </div>
     </div>
   );

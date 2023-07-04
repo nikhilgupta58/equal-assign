@@ -21,10 +21,10 @@ export default function Modal({ children, isOpen, onClose, ...props }: IProp) {
       ></div>
 
       <div
-        className={`fixed flex flex-col bg-white opacity-100 rounded-2xl border-1 border-solid border-gray-200 justify-center items-center ${
+        className={`bottom-0 sm:bottom-[2%] fixed flex flex-col bg-white opacity-100 sm:rounded-2xl rounded-t-2xl border-1 border-solid border-gray-200 justify-center items-center ${
           isOpen ? "block" : "hidden"
         }`}
-        style={{ bottom: "2%", left: "50%", transform: "translate(-50%, 0%)" }}
+        style={{ left: "50%", transform: "translate(-50%, 0%)" }}
         {...props}
       >
         {children}
