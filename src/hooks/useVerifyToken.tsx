@@ -11,6 +11,8 @@ export default function useVerifyToken() {
   const setSession = userStore((state: any) => state.setSession);
   const mutate = ({ mobileNumber, mobileOtp }) => {
     setIsLoading(true);
+    setIsError(null);
+    setIsSuccess(null);
     const axios = getProtectedAxios();
     const payload = {
       requestId: null,
@@ -30,6 +32,7 @@ export default function useVerifyToken() {
           setSession(session);
         } else {
           setErrorToast(data?.message);
+          setIsError(data?.message);
         }
       })
       .catch(() => setIsError(true))

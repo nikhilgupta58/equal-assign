@@ -1,18 +1,18 @@
 import axios from "axios";
 import React from "react";
-import { toastStore } from "../store";
 import { BASE_URL, header } from "../utils/constants";
 
 export default function useRequestToken() {
   const [isSuccess, setIsSuccess] = React.useState(null);
   const [isError, setIsError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [setErrorToast] = toastStore((state) => [state.setErrorToast]);
   const mutate = (phone) => {
     let config = {
       headers: header,
     };
     setIsLoading(true);
+    setIsError(null);
+    setIsSuccess(null);
     const payload = {
       requestId: "",
       provider: "EQUAL_AUTH",
@@ -22,12 +22,17 @@ export default function useRequestToken() {
     const endpoint = BASE_URL + "/auth/init";
     axios
       .post(endpoint, payload, config)
-      .then(() => {
-        setIsSuccess(true);
+      .then(({ data }: { data: any }) => {
+        if (data?.status_code === "200") setIsSuccess(true);
+        else {
+          setIsError(data?.message);
+        }
       })
-      .catch(() => {
-        setErrorToast("Error");
-        setIsError(true);
+      .catch((err) => {
+        const { config, response } = err;
+        if (config?.data && response?.data && response?.status === 400) {
+          setIsError(response?.data?.message);
+        }
       })
       .finally(() => setIsLoading(false));
   };

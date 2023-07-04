@@ -22,8 +22,9 @@ const Button = ({
   } ${!disabled && !isLoading ? "brightness-hover" : ""}`;
 
   const variantClass = {
-    primary:
-      "text-xs bg-equal-green transition-all duration-100 hover:brightness-110 text-[#fff]",
+    primary: `text-xs bg-equal-green transition-all duration-100 ${
+      disabled ? "" : "hover:brightness-110"
+    }  text-[#fff]`,
     secondary:
       "text-xs bg-[#fff] text-[#212121] hover:bg-gray-100 transition-all duration-100 border-[1px] border-[#212121]",
     danger:
