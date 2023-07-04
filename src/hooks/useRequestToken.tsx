@@ -25,9 +25,8 @@ export default function useRequestToken() {
       .then(() => {
         setIsSuccess(true);
       })
-      .catch((err) => {
-        console.log(err);
-        setErrorToast("ds");
+      .catch(() => {
+        setErrorToast("Error");
         setIsError(true);
       })
       .finally(() => setIsLoading(false));
