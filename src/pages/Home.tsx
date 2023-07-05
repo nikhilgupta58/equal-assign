@@ -19,7 +19,7 @@ const keyName = {
 };
 
 export default function Home() {
-  const { isLoading, data } = useIdentities();
+  const { isLoading, data, isError } = useIdentities();
 
   if (isLoading) {
     return (
@@ -36,10 +36,18 @@ export default function Home() {
     );
   }
 
+  if (isError) {
+    return (
+      <AppLayout>
+        <p className="text-[14px] w-full text-red-500">{isError}</p>
+      </AppLayout>
+    );
+  }
+
   if (data?.length === 0) {
     return (
       <AppLayout>
-        <div>No identities found!!</div>
+        <div className="font-[600] text-[16px]">No identities found!!</div>
       </AppLayout>
     );
   }
@@ -54,7 +62,7 @@ export default function Home() {
           return (
             <div key={id} className="shadow-md p-4 flex flex-col gap-2">
               <p className="text-[18px] font-[500]">{row?.keyName}</p>
-              <div className="flex flex-col gap-2" >
+              <div className="flex flex-col gap-2">
                 {Object.entries(rowData).map(([key], id1) => {
                   const keyData = keyName[key];
                   if (keyData) {
