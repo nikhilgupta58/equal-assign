@@ -25,11 +25,13 @@ export const getProtectedAxios = () => {
       },
     });
   authAxios.interceptors.response.use(
-    (response) => {
+    (response: any) => {
+      if (response?.data?.status_code) localStorage.removeItem("equal");
       return response;
     },
     (error) => {
       const { status } = error.response;
+
       switch (status) {
         case 403:
           localStorage.removeItem("equal");
