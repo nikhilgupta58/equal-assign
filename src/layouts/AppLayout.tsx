@@ -8,7 +8,7 @@ export default function AppLayout({ children }) {
     <GenricLayout>
       <div className="flex flex-col justify-between h-full">
         <div>
-          <div className="my-2 border-b-[1px] border-b-gray-200 flex items-center justify-between px-4 font-[500] text-[20px]">
+          <div className="my-4 border-b-[1px] border-b-gray-200 flex items-center justify-between px-4 font-[500] text-[20px]">
             <div className="w-1 h-11" />
             <div className="flex flex-col gap-3 pb-[20px]">
               <img src={logo} className="object-contain max-h-[37px]" />
