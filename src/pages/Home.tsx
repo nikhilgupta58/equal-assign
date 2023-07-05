@@ -4,7 +4,7 @@ import AppLayout from "../layouts/AppLayout";
 export default function Home() {
   const { isLoading } = useIdentities();
 
-  if (!isLoading) {
+  if (isLoading) {
     return (
       <AppLayout>
         <div className="flex flex-col gap-3">
