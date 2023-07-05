@@ -35,7 +35,14 @@ export default function useVerifyToken() {
           setIsError(data?.message);
         }
       })
-      .catch(() => setIsError(true))
+      .catch((err) => {
+        const { config, response } = err;
+        if (config?.data && response?.data && response?.status === 400) {
+          setIsError(response?.data?.message);
+        } else {
+          setIsError("We are facing some issues, please come back later");
+        }
+      })
       .finally(() => setIsLoading(false));
   };
   return { mutate, isError, isLoading, isSuccess };
