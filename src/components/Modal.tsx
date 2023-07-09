@@ -11,6 +11,19 @@ export default function Modal({ children, isOpen, onClose, ...props }: IProp) {
     if (isOpen) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "initial";
   }, [isOpen]);
+
+  const [opened, setOpened] = React.useState(false);
+
+  React.useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        setOpened(true);
+      }, 100);
+    } else {
+      setOpened(false);
+    }
+  }, [isOpen]);
+
   return (
     <>
       <div
@@ -24,7 +37,13 @@ export default function Modal({ children, isOpen, onClose, ...props }: IProp) {
         className={`bottom-0 sm:bottom-[2%] fixed flex flex-col bg-white opacity-100 sm:rounded-2xl rounded-t-2xl border-1 border-solid border-gray-200 justify-center items-center ${
           isOpen ? "block" : "hidden"
         }`}
-        style={{ left: "50%", transform: "translate(-50%, 0%)" }}
+        style={{
+          left: "50%",
+          transform: "translate(-50%, 0%)",
+          transition: "all 0.3s ease",
+          top: opened ? "65%" : "100%",
+          overflow: "hidden",
+        }}
         {...props}
       >
         {children}
