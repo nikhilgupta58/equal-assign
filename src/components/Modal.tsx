@@ -12,18 +12,6 @@ export default function Modal({ children, isOpen, onClose, ...props }: IProp) {
     else document.body.style.overflow = "initial";
   }, [isOpen]);
 
-  const [opened, setOpened] = React.useState(false);
-
-  React.useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => {
-        setOpened(true);
-      }, 100);
-    } else {
-      setOpened(false);
-    }
-  }, [isOpen]);
-
   return (
     <>
       <div
@@ -41,8 +29,6 @@ export default function Modal({ children, isOpen, onClose, ...props }: IProp) {
           left: "50%",
           transform: "translate(-50%, 0%)",
           transition: "all 0.3s ease",
-          top: opened ? "65%" : "100%",
-          overflow: "hidden",
         }}
         {...props}
       >
